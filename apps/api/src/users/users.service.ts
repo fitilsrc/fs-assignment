@@ -1,26 +1,16 @@
 import { UserType } from '@app/shared';
 import { Injectable } from '@nestjs/common';
+import users from '@app/shared/data/users.json';
 
 @Injectable()
 export class UsersService {
-  private readonly mockUsers = [
-    {
-      id: 1,
-      username: "admin",
-      password: "admin",
-      given_name: "John",
-      family_name: "Doe",
-    },
-    {
-      id: 2,
-      username: "user",
-      password: "user",
-      given_name: "Hannah",
-      family_name: "Doe",
-    }
-  ]
 
+  /**
+   * Get unique user by username
+   * @param username
+   * @returns Promise<UserType | undefined>
+   */
   async getUserByName(username: string): Promise<UserType | undefined> {
-    return this.mockUsers.find(user => user.username === username)
+    return users.find(user => user.username === username)
   }
 }

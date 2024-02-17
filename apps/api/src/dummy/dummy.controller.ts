@@ -1,12 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { DummyService } from './dummy.service';
+import { DummyType } from '@app/shared/types/DummyType';
 
 @Controller('dummy')
 export class DummyController {
   constructor(private readonly dummyService: DummyService) {}
 
   @Get('/')
-  getAllDummies() {
-    return this.dummyService.getAllDummies();
+  async getAllDummies(): Promise<DummyType[]> {
+    return await this.dummyService.getAllDummies();
   }
 }
