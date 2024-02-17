@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
+import Header from "@ui/src/components/header";
+import { Toaster } from "@ui/src/components/ui/toaster";
+import { Separator } from "@ui/src/components/ui/separator";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +18,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const user = {
+    username: "username",
+    given_name: "Serhii",
+    family_name: "Dovhyi"
+  }
+
   return (
     <html suppressHydrationWarning lang="en">
       <body className={inter.className}>
@@ -24,7 +34,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="flex min-h-screen w-full flex-col">
+            <Header />
+            <Separator />
+            <main className="w-full p-8 h-[calc(100vh-4rem)]">
+              {children}
+              <Toaster />
+            </main>
+          </div>
         </ThemeProvider>
       </body>
     </html>

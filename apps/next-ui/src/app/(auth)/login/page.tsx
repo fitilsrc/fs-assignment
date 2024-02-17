@@ -14,7 +14,7 @@ const formSchema = z.object({
   password: z.string()
 })
 
-export default function Signin() {
+export default function SignIn() {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -25,7 +25,7 @@ export default function Signin() {
   });
 
   return (
-    <section className="flex justify-center items-center h-[calc(100vh-4rem)]">
+    <section className="flex justify-center items-center h-full">
       <Form {...form}>
         <form action={userLogin} className="space-y-8">
           <Card>
