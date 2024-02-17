@@ -1,9 +1,13 @@
 import { DummyType } from '@app/shared/types/DummyType';
 import { Injectable, Logger } from '@nestjs/common';
-import dummies from '@app/shared/data/dummies.json';
+import * as dummies from '@app/shared/data/dummies.json';
 
 @Injectable()
 export class DummyService {
+  dummies: DummyType[];
+  constructor() {
+    this.dummies = dummies
+  }
   private readonly logger = new Logger(DummyService.name);
 
   /**
@@ -11,6 +15,6 @@ export class DummyService {
    * @returns Promise<DummyType[]>
    */
   async getAllDummies(): Promise<DummyType[]> {
-    return dummies;
+    return this.dummies;
   }
 }
