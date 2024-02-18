@@ -1,6 +1,16 @@
 ## Getting Started
 
 ### Configure API
+
+install pnpm package manager
+
+```bash
+
+npm install -g pnpm
+
+```
+
+### Configure API
 Create a .env file in the root of API project
 
 ```bash
@@ -46,3 +56,9 @@ pnpm install
 pnpm dev
 
 ```
+
+You can find the application at the link http://localhost:3000
+login and password:
+admin admin
+or
+user user
