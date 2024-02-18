@@ -1,6 +1,6 @@
 ## Getting Started
 
-### Configure API
+### Install pnpm
 
 install pnpm package manager
 
