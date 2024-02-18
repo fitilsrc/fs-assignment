@@ -1,7 +1,7 @@
 ## Getting Started
 
 ### Configure API
-Create a .env file in the root of api project
+Create a .env file in the root of API project
 
 ```bash
 
@@ -20,7 +20,7 @@ JWT_SECRET=secret
 
 
 ### Configure UI
-Create a .env file in the root of api project
+Create a .env file in the root of UI project
 
 ```bash
 

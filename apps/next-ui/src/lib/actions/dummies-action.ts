@@ -5,7 +5,7 @@ import { TokensType } from '../types/TokensType';
 import { DummyType } from '../types/DummyType';
 import { redirect } from 'next/navigation';
 
-export async function getDummiesAction(): Promise<DummyType[] | void> {
+export async function getDummiesAction(): Promise<DummyType[] | undefined> {
   const session = cookies().get('session')?.value;
   if (!session) return redirect('/login');
 
