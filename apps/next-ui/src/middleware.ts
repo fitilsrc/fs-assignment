@@ -38,7 +38,7 @@ export async function middleware(request: NextRequest) {
     };
 
     try {
-      const res = await fetch(`${process.env.ISSN_API_ENDPOINT}/auth/refresh`, params)
+      const res = await fetch(`${process.env.API_ENDPOINT}/auth/refresh`, params)
       if (!res.ok) throw new Error(res.status.toString());
       const data: TokensType = await res.json();
 
@@ -50,7 +50,6 @@ export async function middleware(request: NextRequest) {
       response.headers.set("Authorization", `Bearer ${data.access_token}`);
 
       return response;
-
     } catch (error) {
       console.log(error);
     }

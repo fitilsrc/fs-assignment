@@ -1,23 +1,19 @@
 "use client";
 
-import { UserType } from "../lib/types/UserType";
 import { Logo } from "./logo";
 import { ModeToggle } from "./toggle-mode";
 import { UserMenu } from "./user-menu";
+import { useAppContext } from "./user-provider";
 
-interface HeaderProps {
-  user?: UserType
-}
+export default function Header() {
+  const { state } = useAppContext();
 
-export default function Header({
-  user
-}: HeaderProps) {
-
-  const getAbbreviation = !user
-    ? ""
-    : `${user?.given_name.split("")[0].toUpperCase()}${user?.family_name
-        .split("")[0]
-        .toUpperCase()}`;
+  const getAbbreviation =
+    state.user?.given_name && state.user?.family_name
+      ? `${state.user.given_name.split("")[0].toUpperCase()}${state.user.family_name
+          .split("")[0]
+          .toUpperCase()}`
+      : "";
 
   return (
     <header className="w-full">
@@ -26,7 +22,7 @@ export default function Header({
           <Logo />
         </div>
         <div className="flex gap-x-6 items-center">
-          {!user ? null : <UserMenu abbreviation={getAbbreviation} />}
+          {!state.isLoggedIn ? null : <UserMenu abbreviation={getAbbreviation} />}
           <ModeToggle />
         </div>
       </div>

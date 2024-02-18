@@ -1,11 +1,7 @@
 import { GearIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
-interface LogoProps {
-  isCollapsed?: boolean;
-}
-
-export function Logo({ isCollapsed }: LogoProps) {
+export function Logo() {
   return (
     <Link
       className="flex gap-2 items-center"

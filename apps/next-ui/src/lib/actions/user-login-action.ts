@@ -1,26 +1,27 @@
 "use server";
 
-import { useToast } from '@ui/src/components/ui/use-toast';
 import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+import { TokensType } from '../types/TokensType';
 
-export async function userLogin(formData: FormData): Promise<void> {
+export interface userLoginProps {
+  username: string,
+  password: string
+};
 
-  console.log('[log]', formData);
-
+export async function userLoginAction({ username, password }: userLoginProps): Promise<TokensType | void> {
   const params: RequestInit = {
     method: 'POST',
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      username: formData.get('username'),
-      password: formData.get('password')
+      username,
+      password
     })
   };
 
   try {
-    const res = await fetch(`${process.env.API_ENDPOINT}/auth/login`, params)
+    const res = await fetch(`${process.env.API_ENDPOINT}/auth/login`, params);
     if (!res.ok) throw new Error(res.status.toString());
     const data = await res.json();
 
@@ -28,9 +29,9 @@ export async function userLogin(formData: FormData): Promise<void> {
       name: 'session',
       value: JSON.stringify(data)
     });
+
+    return data;
   } catch (error) {
     console.log(error);
   }
-
-  redirect('/');
 }
