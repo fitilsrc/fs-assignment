@@ -1,5 +1,5 @@
-import React from 'react'
-import { DummyType } from '../lib/types/DummyType'
+import React from 'react';
+import { DummyType } from '../lib/types/DummyType';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 
 interface DummyProps {

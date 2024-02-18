@@ -3,4 +3,4 @@ export type DummyType = {
   title: String,
   overview: string,
   tagline?: string,
-};
+}
