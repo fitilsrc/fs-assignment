@@ -9,6 +9,7 @@ export class UsersService {
   constructor() {
     this.users = users
   }
+
   /**
    * Get unique user by username
    * @param username

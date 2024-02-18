@@ -15,7 +15,7 @@ export type AppStateType = {
 
 export type AppAction =
   | UpdateLoggedInUserAction
-  | RemoveLoggedInUserAction
+  | RemoveLoggedInUserAction;
 
 export const appReducer = (state: AppStateType, action: AppAction) => {
   switch (action.type) {
