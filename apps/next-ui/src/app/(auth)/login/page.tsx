@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@ui/src/components/ui/button";
-import { userLogin } from "@ui/src/lib/actions";
+import { useAuth } from "@ui/src/lib/hooks/useAuth";
 
 const formSchema = z.object({
   username: z.string(),
@@ -15,6 +15,7 @@ const formSchema = z.object({
 })
 
 export default function SignIn() {
+  const { userLogin } = useAuth();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -24,10 +25,14 @@ export default function SignIn() {
     }
   });
 
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    userLogin(values);
+  }
+
   return (
     <section className="flex justify-center items-center h-full">
       <Form {...form}>
-        <form action={userLogin} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <Card>
             <CardHeader>
               <CardTitle className="text-2xl">Login to your account</CardTitle>

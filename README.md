@@ -1,6 +1,6 @@
 ## Getting Started
 
-## Configure API
+### Configure API
 Create a .env file in the root of api project
 
 ```bash
@@ -19,7 +19,7 @@ JWT_SECRET=secret
 ```
 
 
-## Configure UI
+### Configure UI
 Create a .env file in the root of api project
 
 ```bash
@@ -36,12 +36,13 @@ API_ENDPOINT=http://localhost:9000
 
 ```
 
-## Run development server
+### Run development server
 
 Go to the root of the project
 
 ```bash
 
+pnpm install
 pnpm dev
 
 ```

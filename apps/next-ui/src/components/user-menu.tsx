@@ -2,18 +2,17 @@
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "./ui/avatar";
+import { useAuth } from "../lib/hooks";
 
 interface UserMenuProps {
   abbreviation: string,
 }
 
 export function UserMenu({
-  abbreviation
+  abbreviation,
 }: UserMenuProps) {
 
-  const handleClick = async () => {
-    console.log('[log] logout')
-  }
+  const { userLogout } = useAuth();
 
   return (
     <DropdownMenu>
@@ -25,7 +24,7 @@ export function UserMenu({
       <DropdownMenuContent>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={handleClick} className="hover:cursor-pointer">Log out</DropdownMenuItem>
+        <DropdownMenuItem onClick={userLogout} className="hover:cursor-pointer">Log out</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
