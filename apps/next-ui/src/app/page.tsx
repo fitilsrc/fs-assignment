@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useAuth } from "../lib/hooks";
-import { useDummies } from "../lib/hooks/useDummies";
+import { useAuth, useDummies } from "../lib/hooks";;
 import { Loader } from "../components/ui/loader";
 import { Dummy } from "../components/dummy";
 import { ErrorAlert } from "../components/ui/error";

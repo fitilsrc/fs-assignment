@@ -8,7 +8,7 @@ interface DummyProps {
 
 export const Dummy = ({ dummy }: DummyProps) => {
   return (
-    <Card className="w-[380px]">
+    <Card className="w-[345px]">
       <CardHeader>
         <CardTitle className="leading-8">{dummy.title}</CardTitle>
         <CardDescription>{dummy.tagline}</CardDescription>
