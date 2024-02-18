@@ -1,7 +1,7 @@
 import { Injectable, Logger, UnauthorizedException } from "@nestjs/common";
 import { UsersService } from "../users/users.service";
 import { JwtService } from "@nestjs/jwt";
-import { SignInType, TokensType } from "@app/shared";
+import { SignInType, TokensType, UserType } from "@app/shared";
 import { jwtDecode } from "jwt-decode";
 
 @Injectable()
@@ -12,6 +12,21 @@ export class AuthService {
     private usersService: UsersService,
     private jwtService: JwtService
   ) {}
+
+
+  /**
+   * Validate user from mock data
+   * @param username
+   * @param password
+   * @returns Promise<UserType | null>
+   */
+  async validateUser(username: string, password: string): Promise<UserType | null> {
+    const user = await this.usersService.getUserByName(username);
+    if (user && user?.password === password) {
+      return user;
+    }
+    return null;
+  }
 
   /**
    * Login user with credential
